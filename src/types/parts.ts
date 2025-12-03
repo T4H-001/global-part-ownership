@@ -13,7 +13,11 @@ export type VehicleSystem =
   | 'wheels_tyres'
   | 'steering'
   | 'safety'
-  | 'lighting';
+  | 'lighting'
+  // EV-specific systems
+  | 'ev_battery'
+  | 'ev_drivetrain'
+  | 'ev_charging';
 
 export type PartCondition = 
   | 'new'
@@ -211,10 +215,12 @@ export interface VehicleSystemInfo {
   description: string;
   icon: string;
   color: string;
+  isEV?: boolean;
 }
 
 // Helper to get vehicle system display info
 export const VEHICLE_SYSTEMS: VehicleSystemInfo[] = [
+  // ICE & Universal Systems
   { id: 'body', name: 'Body & Exterior', description: 'Panels, bumpers, doors, windows, mirrors', icon: 'Car', color: 'hsl(210, 70%, 50%)' },
   { id: 'engine', name: 'Engine', description: 'Engine block, pistons, valves, timing components', icon: 'Cog', color: 'hsl(0, 70%, 50%)' },
   { id: 'transmission', name: 'Transmission', description: 'Gearbox, clutch, differentials, driveshafts', icon: 'Settings2', color: 'hsl(30, 70%, 50%)' },
@@ -229,4 +235,8 @@ export const VEHICLE_SYSTEMS: VehicleSystemInfo[] = [
   { id: 'steering', name: 'Steering', description: 'Steering wheel, rack, column, power steering', icon: 'Navigation', color: 'hsl(160, 60%, 45%)' },
   { id: 'safety', name: 'Safety Systems', description: 'Airbags, seatbelts, crash sensors', icon: 'Shield', color: 'hsl(120, 60%, 40%)' },
   { id: 'lighting', name: 'Lighting', description: 'Headlights, taillights, indicators, interior lights', icon: 'Lightbulb', color: 'hsl(50, 80%, 55%)' },
+  // EV-Specific Systems
+  { id: 'ev_battery', name: 'EV Battery System', description: 'High-voltage battery pack, BMS, thermal management', icon: 'Battery', color: 'hsl(142, 70%, 45%)', isEV: true },
+  { id: 'ev_drivetrain', name: 'EV Drivetrain', description: 'Electric motors, inverters, reduction gears', icon: 'Cpu', color: 'hsl(262, 70%, 50%)', isEV: true },
+  { id: 'ev_charging', name: 'EV Charging', description: 'Onboard charger, charge port, DC fast charge', icon: 'PlugZap', color: 'hsl(190, 80%, 45%)', isEV: true },
 ];
