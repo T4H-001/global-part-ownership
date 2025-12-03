@@ -11,7 +11,7 @@ interface StatsCardProps {
     value: number;
     isPositive: boolean;
   };
-  color?: 'primary' | 'accent' | 'success' | 'warning' | 'destructive';
+  color?: 'primary' | 'accent' | 'success' | 'warning' | 'destructive' | 'info';
   className?: string;
 }
 
@@ -30,6 +30,7 @@ export function StatsCard({
     success: 'bg-success/10 text-success',
     warning: 'bg-warning/10 text-warning',
     destructive: 'bg-destructive/10 text-destructive',
+    info: 'bg-info/10 text-info',
   };
 
   return (

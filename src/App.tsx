@@ -19,6 +19,11 @@ import Terms from "./pages/Terms";
 // Portals
 import ManufacturerPortal from "./pages/portals/ManufacturerPortal";
 import ConsumerPortal from "./pages/portals/ConsumerPortal";
+import OEMPortal from "./pages/portals/OEMPortal";
+import FleetPortal from "./pages/portals/FleetPortal";
+import InsurancePortal from "./pages/portals/InsurancePortal";
+import RepairPortal from "./pages/portals/RepairPortal";
+import PlatformAdmin from "./pages/PlatformAdmin";
 
 // Legacy tyre pages (keeping for backward compatibility)
 import Index from "./pages/Index";
@@ -63,10 +68,15 @@ const App = () => (
           {/* Stakeholder Portals */}
           <Route path="/portal/manufacturer" element={<ManufacturerPortal />} />
           <Route path="/portal/consumer" element={<ConsumerPortal />} />
-          <Route path="/portal/distributor" element={<ConsumerPortal />} /> {/* Placeholder */}
-          <Route path="/portal/repair" element={<ConsumerPortal />} /> {/* Placeholder */}
+          <Route path="/portal/oem" element={<OEMPortal />} />
+          <Route path="/portal/fleet" element={<FleetPortal />} />
+          <Route path="/portal/insurance" element={<InsurancePortal />} />
+          <Route path="/portal/repair" element={<RepairPortal />} />
           <Route path="/portal/recycler" element={<RecyclerDashboard />} />
           <Route path="/portal/government" element={<GovernmentDashboard />} />
+          
+          {/* Platform Admin */}
+          <Route path="/admin/platform" element={<PlatformAdmin />} />
           
           {/* Core pages */}
           <Route path="/auth" element={<Auth />} />
