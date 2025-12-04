@@ -15,6 +15,7 @@ import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import Pricing from "./pages/Pricing";
 
 // Portals
 import ManufacturerPortal from "./pages/portals/ManufacturerPortal";
@@ -84,6 +85,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/pricing" element={<Pricing />} />
           
           {/* Legacy TyreLedger routes */}
           <Route path="/tyres" element={<PartsHome />} /> {/* Redirect to new home */}
