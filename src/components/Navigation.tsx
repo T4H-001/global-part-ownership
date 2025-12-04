@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { 
   BarChart3, Settings, Search, Menu, X, ChevronDown,
-  Layers, Factory, Users, Truck, Wrench, Recycle, Shield, Car
+  Layers, Factory, Users, Truck, Wrench, Recycle, Shield, Car, Sparkles
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useDemoMode } from "@/hooks/useDemoMode";
@@ -23,12 +23,15 @@ export const Navigation = () => {
   const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(path + '/');
   
   const portals = [
-    { icon: Factory, label: "Manufacturer Portal", href: "/portal/manufacturer" },
-    { icon: Truck, label: "Distributor Portal", href: "/portal/distributor" },
-    { icon: Wrench, label: "Repair Shop Portal", href: "/portal/repair" },
-    { icon: Users, label: "Consumer Portal", href: "/portal/consumer" },
-    { icon: Recycle, label: "Recycler Portal", href: "/portal/recycler" },
-    { icon: Shield, label: "Government Portal", href: "/portal/government" },
+    { icon: Factory, label: "OEM Partners", href: "/portal/oem", highlight: true },
+    { icon: Car, label: "Fleet Managers", href: "/portal/fleet", highlight: true },
+    { icon: Factory, label: "Manufacturers", href: "/portal/manufacturer" },
+    { icon: Truck, label: "Distributors", href: "/portal/distributor" },
+    { icon: Wrench, label: "Repair Shops", href: "/portal/repair" },
+    { icon: Users, label: "Consumers", href: "/portal/consumer" },
+    { icon: Recycle, label: "Recyclers", href: "/portal/recycler" },
+    { icon: Shield, label: "Government", href: "/portal/government" },
+    { icon: Shield, label: "Insurance", href: "/portal/insurance" },
   ];
   
   return (
@@ -79,8 +82,17 @@ export const Navigation = () => {
                   <ChevronDown className="h-3 w-3" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-56">
-                {portals.map((portal) => (
+              <DropdownMenuContent align="end" className="w-56 bg-popover border border-border">
+                {portals.slice(0, 2).map((portal) => (
+                  <DropdownMenuItem key={portal.href} asChild className="bg-primary/5">
+                    <Link to={portal.href} className="flex items-center gap-2 cursor-pointer font-medium">
+                      <portal.icon className="h-4 w-4 text-primary" />
+                      {portal.label}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+                <DropdownMenuSeparator />
+                {portals.slice(2).map((portal) => (
                   <DropdownMenuItem key={portal.href} asChild>
                     <Link to={portal.href} className="flex items-center gap-2 cursor-pointer">
                       <portal.icon className="h-4 w-4" />
@@ -90,6 +102,17 @@ export const Navigation = () => {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
+            
+            <Link to="/pricing">
+              <Button 
+                variant={isActive("/pricing") ? "secondary" : "ghost"}
+                size="sm"
+                className="gap-2"
+              >
+                <Sparkles className="h-4 w-4" />
+                Pricing
+              </Button>
+            </Link>
             
             <Link to="/dashboard">
               <Button 
